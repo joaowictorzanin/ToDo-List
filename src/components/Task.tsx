@@ -3,16 +3,36 @@ import styles from './Task.module.css'
 
 interface ContentProps{
     content: string;
+    disabled: boolean
+    onDeleteTask?: (task: string) => void;
+    onFinishedTask?: (finishedTask: string) => void;
+    onDeleteFinishedTask?: (deleteFinishedTask: string) => void;
 }
-export function Task({content}: ContentProps){
+export function Task({content, onDeleteTask, onFinishedTask, onDeleteFinishedTask, disabled}: ContentProps){
+
+    function handleDeleteTask(){
+        if (disabled == true){
+            onDeleteFinishedTask(content)
+        } else {
+            onDeleteTask(content)
+        }
+        
+        
+    }
+
+    function handleFinishTask(){
+        onFinishedTask(content)
+        
+    }
+
     return(
         <div className={styles.task}>
             <div className={styles.taskCheck}>
-                <button/>
+                <button onClick={handleFinishTask}/>
                 <p>{content}</p>
             </div>
             <div className={styles.trash}>
-                <Trash size={17}/>
+                <Trash size={17} onClick={handleDeleteTask}/>
             </div>
             
         </div>

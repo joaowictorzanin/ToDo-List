@@ -39,3 +39,7 @@
 .trash:hover{
     color: var(--danger);
 }
+
+.taskCheck button:disabled{
+    background: red;
+}

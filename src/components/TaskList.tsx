@@ -9,6 +9,8 @@ import styles from './TaskList.module.css'
 export function TaskList(){
     const [Tasks, setTasks] = useState([])
     const [newTask, setNewTask] = useState('')
+    const [finishedTasks, setFinishedTasks] = useState([])
+    const tasksLength = Tasks.length + finishedTasks.length
 
     function handleCreateTask(event: FormEvent){
         event.preventDefault()
@@ -16,10 +18,38 @@ export function TaskList(){
     }
 
     function handleNewTask(event: ChangeEvent<HTMLInputElement>){
+        event.target.setCustomValidity('')
         setNewTask(event.target.value)
-        console.log(newTask)
+    }
+
+    function handleInvalidTask(event: ChangeEvent<HTMLInputElement>){
+        event.target.setCustomValidity('Este campo é obrigatório!')
+    }
+
+    function handleFinishedTask(taskFinished: string){
+        const tasksWithoutFinishedOne = Tasks.filter(task => {
+            return (task !== taskFinished)
+        })
+        setFinishedTasks([...finishedTasks, taskFinished])
+        setTasks(tasksWithoutFinishedOne)
     }
     
+    function deleteTask(taskToDelete: string){
+        const tasksWithoutDeleteOne = Tasks.filter(task => {
+            return (task !== taskToDelete)
+        })
+
+        setTasks(tasksWithoutDeleteOne)
+    }
+
+    function deleteTaskFinished(taskFinishedToDelete: string){
+        const tasksFinishedWithoutDeleteOne = finishedTasks.filter(task => {
+            return (task !== taskFinishedToDelete)
+        })
+
+        setFinishedTasks(tasksFinishedWithoutDeleteOne)
+    }
+
     return(
         <div className={styles.TaskList}>
             
@@ -31,6 +61,8 @@ export function TaskList(){
                         placeholder='Adicione uma nova tarefa' 
                         onChange={handleNewTask}
                         value={newTask}
+                        onInvalid={handleInvalidTask}
+                        required
                     />
                     <button className={styles.button} type="submit">
                         <span>Criar</span>
@@ -42,16 +74,16 @@ export function TaskList(){
             <header>
                 <div className={styles.taskCreated}>
                     Tarefas Criadas
-                    <span>0</span>
+                    <span>{tasksLength}</span>
                 </div>
                 <div className={styles.taskFinished}>
                     Concluidas
-                    <span>0 de 10</span> 
+                    <span>{finishedTasks.length} de {tasksLength}</span> 
                 </div>
             </header>
             <main className={styles.main}>
                 {
-                    Tasks.length == 0 
+                    tasksLength == 0
                     ? 
                     <NoTask/> 
                     : 
@@ -59,8 +91,20 @@ export function TaskList(){
                         return (<Task 
                             key={task}
                             content={task}
+                            onFinishedTask={handleFinishedTask}
+                            onDeleteTask={deleteTask}
                             />)
                     })
+                }
+
+                {
+                    finishedTasks.map(task => {
+                        return (<Task 
+                            key={task}
+                            content={task}
+                            onDeleteFinishedTask={deleteTaskFinished}
+                            />)
+                    }) 
                 }
             </main>
             
