@@ -1,0 +1,105 @@
+.TaskList{
+    border: 1px solid green;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin:auto;
+    font-size: 0.875rem;
+    font-weight: bold;
+    flex-direction: column;
+}
+
+.TaskList header{
+    max-width: 46rem;
+    width: 100%;
+    margin-top: 5.688rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.taskCreated{
+    color: var(--blue);
+    display: flex;
+    gap: 0.5rem;
+}
+
+.taskCreated span{
+    color: var(--gray-100);
+    background: var(--gray-400);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.125rem 0.5rem 0.125rem 0.5rem;
+    border-radius: 50px;
+}
+
+
+.taskFinished{
+    color: var(--purple);
+    display: flex;
+    gap: 0.5rem;
+}
+
+.taskFinished span{
+    color: var(--gray-100);
+    background: var(--gray-400);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.125rem 0.5rem 0.125rem 0.5rem;
+    border-radius: 50px;
+}
+
+.newTask{
+    display: flex;
+    height: 3.375rem;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: -1.6875rem;
+    
+}
+
+.newTask div{
+    width: 46rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.enterTask{
+    width: 39.875rem;
+    height: 3.375rem;
+    border: 1px solid var(--gray-700);
+    border-radius: 8px;
+    background: var(--gray-500);
+    padding: 1rem;
+}
+
+input{
+    color: var(--gray-100);
+}
+
+.button{
+    width: 5.625rem;
+    height: 3.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: var(--blue-dark);
+    border-radius: 8px;
+    border: transparent;
+    color: var(--gray-100);
+    transition: 0.1s;
+}
+
+.button:hover{
+    background: var(--blue);
+    transition: 0.1s;
+}
+
+
+
