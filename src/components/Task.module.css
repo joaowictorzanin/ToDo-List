@@ -55,3 +55,9 @@
     border: 2px solid var(--purple-dark);
     background: var(--purple-dark);
 }
+
+@media (max-width: 768px) {
+    .task{
+        width: 23rem;
+    }
+}

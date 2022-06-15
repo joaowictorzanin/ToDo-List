@@ -18,3 +18,10 @@
 .main p{
     font-weight: 400;
 }
+
+@media (max-width: 768px){
+    .main{
+        width: 23rem;
+        text-align: center;
+    }
+}

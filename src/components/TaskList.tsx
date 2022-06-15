@@ -53,7 +53,6 @@ export function TaskList(){
 
     return(
         <div className={styles.TaskList}>
-            
             <div>
                 <form className={styles.newTask} onSubmit={handleCreateTask}>
                     <input 
