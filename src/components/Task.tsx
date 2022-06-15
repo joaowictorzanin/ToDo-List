@@ -12,14 +12,14 @@ export function Task({content, onDeleteTask, onFinishedTask, onDeleteFinishedTas
 
     function handleDeleteTask(){
         if (disabled == true){
-            onDeleteFinishedTask(content)
+            onDeleteFinishedTask?.(content)
         } else {
-            onDeleteTask(content)
+            onDeleteTask?.(content)
         }  
     }
 
     function handleFinishTask(){
-        onFinishedTask(content) 
+        onFinishedTask?.(content) 
     }
 
     return(

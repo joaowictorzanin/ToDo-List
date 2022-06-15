@@ -6,10 +6,11 @@ import { NoTask } from './NoTask'
 
 import styles from './TaskList.module.css'
 
+
 export function TaskList(){
-    const [Tasks, setTasks] = useState([])
+    const [Tasks, setTasks] = useState<any[]>([])
     const [newTask, setNewTask] = useState('')
-    const [finishedTasks, setFinishedTasks] = useState([])
+    const [finishedTasks, setFinishedTasks] = useState<any[]>([])
     const tasksLength = Tasks.length + finishedTasks.length
 
     function handleCreateTask(event: FormEvent){
