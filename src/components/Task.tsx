@@ -15,20 +15,17 @@ export function Task({content, onDeleteTask, onFinishedTask, onDeleteFinishedTas
             onDeleteFinishedTask(content)
         } else {
             onDeleteTask(content)
-        }
-        
-        
+        }  
     }
 
     function handleFinishTask(){
-        onFinishedTask(content)
-        
+        onFinishedTask(content) 
     }
 
     return(
         <div className={styles.task}>
-            <div className={styles.taskCheck}>
-                <button onClick={handleFinishTask}/>
+            <div className={disabled == false ? styles.taskCheck : styles.taskCheckDisabled}>
+                <button onClick={handleFinishTask} disabled={disabled}/>
                 <p>{content}</p>
             </div>
             <div className={styles.trash}>

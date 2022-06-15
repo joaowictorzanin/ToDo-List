@@ -15,6 +15,7 @@ export function TaskList(){
     function handleCreateTask(event: FormEvent){
         event.preventDefault()
         setTasks([...Tasks, newTask])
+        setNewTask('')
     }
 
     function handleNewTask(event: ChangeEvent<HTMLInputElement>){
@@ -91,6 +92,7 @@ export function TaskList(){
                         return (<Task 
                             key={task}
                             content={task}
+                            disabled={false}
                             onFinishedTask={handleFinishedTask}
                             onDeleteTask={deleteTask}
                             />)
@@ -102,6 +104,7 @@ export function TaskList(){
                         return (<Task 
                             key={task}
                             content={task}
+                            disabled={true}
                             onDeleteFinishedTask={deleteTaskFinished}
                             />)
                     }) 

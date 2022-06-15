@@ -40,6 +40,18 @@
     color: var(--danger);
 }
 
-.taskCheck button:disabled{
-    background: red;
+.taskCheckDisabled{
+    display: flex;
+    gap: 0.75rem;
+    font-weight: 400;
+    color: var(--gray-300);
+    text-decoration: line-through;
+}
+
+.taskCheckDisabled button{
+    width: 1.125rem;
+    height: 1.125rem;
+    border-radius: 50px;
+    border: 2px solid var(--purple-dark);
+    background: var(--purple-dark);
 }
